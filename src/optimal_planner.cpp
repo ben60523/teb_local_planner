@@ -1135,7 +1135,7 @@ void TebOptimalPlanner::extractVelocity(const PoseSE2& pose1, const PoseSE2& pos
   
   // rotational velocity
   double orientdiff = g2o::normalize_theta(pose2.theta() - pose1.theta());
-  omega = orientdiff/dt;
+  omega = orientdiff/dt * 0.4; // Add constant to restrict angular velocity
 }
 
 bool TebOptimalPlanner::getVelocityCommand(double& vx, double& vy, double& omega, int look_ahead_poses) const
